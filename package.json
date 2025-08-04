@@ -1,0 +1,13 @@
+{
+  "dependencies": {
+    "bun-promptx": "^0.2.0"
+  },
+  "name": "battleship-app",
+  "private": true,
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  }
+}
