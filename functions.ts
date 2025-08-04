@@ -208,7 +208,7 @@ export const generateOptions = (board: Row[]): IndexedReference => {
  *
  * a selected cell from the board has its "hit" property updated to true
  */
-export const fireShot = (board: Row[]) => {
+export const fireShot = (board: Row[]):"small"|"large"|"empty" => {
   const indexRef: IndexedReference = generateOptions(board);
   const [optionArr, references] = indexRef;
   console.log("Enter coordinates for artillery strike.");
@@ -219,8 +219,11 @@ export const fireShot = (board: Row[]) => {
       current.hit = true;
       return current.type;
     }
+  }else{
+    throw new Error('Cell does not contain \'hit\' property. Unknown error has occured');
   }
 
+  return "empty";
 };
 
 /**
