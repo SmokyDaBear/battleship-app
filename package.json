@@ -4,6 +4,9 @@
   },
   "name": "battleship-app",
   "private": true,
+  "scripts": {
+    "start": "bun run battleship-game.ts"
+  },
   "devDependencies": {
     "@types/bun": "latest"
   },
