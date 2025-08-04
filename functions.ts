@@ -33,13 +33,18 @@ export const selectDifficulty =  ():number => {
  * 
  * utility to change preference of firing style or enable debugging
  */
-export const changeSettings = (debug:boolean, firingMode:boolean)=>{
+export const changeSettings = (debug:boolean=false, firingMode:boolean=false):boolean[]=>{
 
   let {selectedIndex} = createSelection([{text: "Yes", description:"Change Settings"},{text: "No",description: "Skip"}]);
   if(selectedIndex === 0){
     debug = enableDebug();
     firingMode = changeFiringMode();
   }
+  if(!debug||!firingMode){
+  debug = false;
+  firingMode = false;
+}
+  return [debug,firingMode];
 }
 
 /**
@@ -154,7 +159,7 @@ if(accuracy<60){
  * randomly populates ships onto the board based on the size. Keeps track
  * of how many shots are fired as a scoring mechanism.
  */
-export const playBattleship = (debug: boolean, useTextforShots:boolean) => {
+export const playBattleship = (debug: boolean=false, useTextforShots:boolean=false) => {
   console.log("Welcome to Battleship!");
   const gameBoard: Row[] =  generateBoard(debug);
   let numShipsLeft = getNumOfShips(gameBoard);
